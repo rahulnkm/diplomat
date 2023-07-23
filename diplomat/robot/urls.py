@@ -3,5 +3,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('prompt', views.prompt),
+    path("snapshot_webhook_callback", views.snapshot_webhook_callback),
 ]
