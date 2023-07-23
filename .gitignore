@@ -1,0 +1,11 @@
+# idea folder
+.idea
+
+# virtual environment
+venv
+
+# environment variables
+.env
+
+# pyproject toml file
+pyproject.toml

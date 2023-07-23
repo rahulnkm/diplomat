@@ -66,11 +66,3 @@ def query_snapshot_space(space_id):
           }}
         }}
     """)))
-
-
-if __name__ == "__main__":
-    print(
-        query_snapshot_proposal(
-            "QmZ21uS8tVucpaNq2LZCbZUmHhYYXunC1ZS2gPDNWwPWD9"
-        )
-    )
