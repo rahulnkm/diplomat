@@ -5,7 +5,7 @@
 venv
 
 # environment variables
-*.env
+.env
 
 # pyproject toml file
 pyproject.toml
