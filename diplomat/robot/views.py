@@ -8,11 +8,6 @@ from .serializers import SnapshotProposalRecommendationSerializer
 
 @api_view(["POST"])
 def snapshot_webhook_callback(request):
-    # 1. Get the snapshot event data
-    # 2. Create a prompt with the snapshot event data
-    # 3. Send the prompt to OpenAI
-    # 4. Get OpenAI response and create a SnapshotProposalRecommendation
-
     snapshot_event = request.data
     proposal = snapshot_service.query_snapshot_proposal(
         snapshot_event.get("id").strip("proposal/")
