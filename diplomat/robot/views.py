@@ -18,12 +18,15 @@ def snapshot_webhook_callback(request):
         snapshot_event.get("id").strip("proposal/")
     ).get("proposal")
 
-    messages, completion = openai_service.create_chat_completion_from_proposal(
-        proposal
+    messages, chat_completion = (
+        openai_service.create_chat_completion_from_proposal(proposal)
     )
 
-    # SnapshotProposalRecommendation.objects.create()
-    #
-    # serializer = SnapshotProposalRecommendationSerializer()
+    SnapshotProposalRecommendation.objects.create(
+        messages=messages, chat_completion=chat_completion
+    )
+    serializer = SnapshotProposalRecommendationSerializer(
+        SnapshotProposalRecommendation.objects.all()[0]
+    )
 
-    return Response({"messages": messages, "completion": completion})
+    return Response(serializer.data)
