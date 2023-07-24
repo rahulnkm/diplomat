@@ -11,7 +11,7 @@ load_dotenv(pathlib.Path(__file__).parents[3].joinpath(".env"))
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
-def create_chat_completion_messages_prompt_from_proposal(proposal):
+def create_chat_completion_from_proposal(proposal):
     dao = snapshot_service.query_snapshot_space(proposal.get("space").get("id"))
 
     personal_statement = None
@@ -22,7 +22,7 @@ def create_chat_completion_messages_prompt_from_proposal(proposal):
     )
     proposal_statement = f"{proposal.get('title')}\n\n{proposal.get('body')}"
 
-    return [
+    messages = [
         {
             "role": "system",
             "content": (
@@ -44,8 +44,6 @@ def create_chat_completion_messages_prompt_from_proposal(proposal):
         },
     ]
 
-
-def create_chat_completion(messages):
-    return openai.ChatCompletion.create(
+    return messages, openai.ChatCompletion.create(
         model=os.getenv("OPENAI_MODEL"), messages=messages
     )
