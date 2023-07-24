@@ -8,7 +8,7 @@ client = Client(transport=transport, fetch_schema_from_transport=True)
 
 
 def query_snapshot_proposal(proposal_id):
-    return client.execute(gql(textwrap.dedent(f"""
+    return client.execute(gql(textwrap.dedent(f"""\
         query {{
             proposal(id:"{proposal_id}") {{
                 id
@@ -42,7 +42,7 @@ def query_snapshot_proposal(proposal_id):
 
 
 def query_snapshot_space(space_id):
-    return client.execute(gql(textwrap.dedent(f"""
+    return client.execute(gql(textwrap.dedent(f"""\
         query Spaces {{
             spaces(where: {{id: "{space_id}"}}) {{
                 id
