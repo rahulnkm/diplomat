@@ -4,7 +4,7 @@ import pathlib
 from dotenv import load_dotenv
 import openai
 
-from . import snapshot_service
+from . import snapshot_utils
 
 load_dotenv(pathlib.Path(__file__).parents[3].joinpath(".env"))
 
@@ -12,7 +12,7 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 
 def create_chat_completion_from_proposal(proposal):
-    dao = snapshot_service.query_snapshot_space(proposal.get("space").get("id"))
+    dao = snapshot_utils.query_snapshot_space(proposal.get("space").get("id"))
 
     personal_statement = None
     dao_statement = (
