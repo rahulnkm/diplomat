@@ -1,0 +1,2 @@
+[alias]
+dc = commit -m "Updated by Arjun"
